@@ -6,11 +6,9 @@ import { jwtDecode } from "jwt-decode";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import {
-  AuthContextType,
-  CustomJwtPayload,
-  User,
-} from "../interfaces/interfaces";
+import { AuthContextType, User } from "../interfaces/AuthContextInterface";
+import { CustomJwtPayload } from "../interfaces/JwtPayloadInterface";
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType>(
   {} as AuthContextType
@@ -40,13 +38,19 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    if (token && !user) {
-      getUserData();
+    // If there's a valid token and user data hasn't been fetched yet, fetch user data
+    if (token) {
+      if (!user) {
+        getUserData();
+      } else {
+        setLoading(false); // Don't fetch again if user is already set
+      }
     } else {
-      setLoading(false);
+      setLoading(false); // Set loading to false if no token is present
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [token, user]);
 
   const logout = () => {
     removeToken();

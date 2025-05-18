@@ -1,23 +1,17 @@
-// Layout.tsx
-import { useState } from "react";
+import { Box } from "@mui/material";
+// import SideBar from "../SideBar/SideBar";
 import { Outlet } from "react-router-dom";
-import SideBare from "../SideBar/SideBar";
-import { AdminNavBare } from "../AdminNavBare/AdminNavBare";
+import AdminNavBar from "../AdminNavBar/AdminNavBar";
 
-const Layout = () => {
-  const [collapsed, setCollapsed] = useState(false);
-
+export default function AdminLayout() {
   return (
-      <div style={{ display: "flex" }}>
-        <SideBare collapsed={collapsed} setCollapsed={setCollapsed}  />
-        <div style={{ flex: 1 }}>
-        <AdminNavBare />
-          <main style={{ padding: "20px" }}>
-            <Outlet />
-          </main>
-        </div>
-      </div>
-  );
-};
+    <Box sx={{ display: "flex" }}>
+      {/* <SideBar /> */}
 
-export default Layout;
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <AdminNavBar />
+        <Outlet />
+      </Box>
+    </Box>
+  );
+}
