@@ -9,16 +9,16 @@ export interface UserGroup {
 }
 
 export interface User {
-  _id: string;
+  id: number;
   userName: string;
   email: string;
-  phoneNumber: number;
   country: string;
-  role: string;
-  profileImage: string;
-  verified: boolean;
-  createdAt: string;
-  updatedAt: string;
+  phoneNumber: string;
+  imagePath: string;
+  isActivated: boolean;
+  group: UserGroup;
+  creationDate: string;
+  modificationDate: string;
 }
 
 export type SnackbarContextType = (
@@ -35,8 +35,19 @@ export type AuthContextType = {
 };
 
 
-
 export interface CustomJwtPayload extends JwtPayload {
-  _id: string;
-  role: "admin" | "user";
+  userGroup: "Manager" | "Employee";
+}
+
+
+export interface fogetPass {
+  email: string
+}
+export interface restPassword {
+  seed: number | string;
+  email: string;
+  password: string | number;
+  confirmPassword: string | number
+
+
 }

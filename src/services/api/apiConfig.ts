@@ -6,9 +6,15 @@ export const users_endpoints = {
   REGISTER: `/portal/users`,
   VERIFY: `/Users/Verify`,
   RESET_REQUEST: `/Users/Reset/Request`,
-  RESET: `/Users/Reset`,
-  GET_USER: (id: string) => `/admin/users/${id}`,
+  restPassword: `portal/users/reset-password`,
+  GET_USER: `/Users/currentUser/`,
+  getUser: (id: number) => `/Users/${id}`,
   CHANGE_PASSWORD: `/Users/ChangePassword`,
+  UPDATE_USER: (id: number) => `/Users/${id}`,
+  forgetPass: "portal/users/forgot-password",
+  RESET: `/Users/Reset`,
+  // GET_USER: (id: string) => `/admin/users/${id}`,
+  // CHANGE_PASSWORD: `/Users/ChangePassword`,
 };
 
 export const facilities_endpoints = {
