@@ -1,9 +1,4 @@
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
-
-import { AuthContext } from "./../../../contexts/AuthContext";
-import NavBar from "../NavBar/NavBar";
-
 import {
   Box,
   Typography,
@@ -29,6 +24,9 @@ import { DateRangePicker } from "rsuite";
 import { useNavigate } from "react-router-dom";
 
 import "rsuite/DateRangePicker/styles/index.css";
+import NavBar from "../../Shared/NavBar/NavBar";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { Navigate, Outlet } from "react-router-dom";
 
 export default function LandingPage() {
   const { token, isManager } = useContext(AuthContext);
@@ -93,6 +91,8 @@ export default function LandingPage() {
 
   return (
     <>
+      <NavBar />
+
       <Box
         sx={{
           display: "flex",
@@ -283,6 +283,8 @@ export default function LandingPage() {
       <AdsSections ads={ads} />
       <TestimonialSlider />
       <Footer />
+
+      {/* <Outlet /> */}
     </>
   );
 }

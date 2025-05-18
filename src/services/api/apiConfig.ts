@@ -1,6 +1,23 @@
 export const baseURL = "https://upskilling-egypt.com:3000/api/v0";
 export const imageURL = "https://upskilling-egypt.com:3000/";
 
+export const auth_endpoints = {
+  LOGIN: `/portal/users/login`,
+  REGISTER: `/portal/users`,
+  FORGET_PASSWORD: `/portal/users/forget-password`,
+  RESET_PASSWORD: `/portal/users/reset-password`,
+  CHANGE_PASSWORD: `/portal/users/change-password`,
+  GET_USER: (id: string) => `/portal/users/${id}`,
+};
+
+export const userRooms_endpoints = {
+  GET_ROOM_DETAILS: (id: string) => `/portal/rooms/${id}`,
+};
+export const userBooking = {
+  CREATE_BOOKING: `/portal/booking`,
+  PAY_BOOKING: (id: string) => `/portal/booking/${id}/pay`,
+};
+
 export const users_endpoints = {
   LOGIN: `/portal/users/login`,
   REGISTER: `/portal/users`,
@@ -24,6 +41,23 @@ export const facilities_endpoints = {
   ADD_FACILITY: `/admin/room-facilities`,
 };
 
+export const comments_endpoints = {
+  GET_ALL_COMMENTS: `/portal/room-comments`,
+  CREATE_COMMENT: `/portal/room-comments`,
+};
+
+export const reviews_endpoints = {
+  CREATE_REVIEW: `/portal/room-reviews`,
+}
+
+export const Ads_endpoints = {
+  GET_ALL_Ads: `/admin/ads`,
+  GET_Add_details: (id: string | number) => `/portal/ads/${id}`,
+  EditOnAdd: (id: string) => `/admin/ads/${id}`,
+  deleteAdd: (id: string) => `/admin/ads/${id}`,
+  addAdd: `/admin/ads`,
+  getRoomId: "/admin/rooms?page=1&size=10",
+};
 export const room_endpoints = {
   GET_ALL_ROOMS: `/admin/rooms`,
   GET_ROOM_BY_ID: (id: string) => `/admin/rooms/${id}`,
