@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { loginSehemaValidation } from "../../../services/vaildators";
 import { apiInstance } from "../../../services/api/apiInstance";
-import { admin_endpoints } from "../../../services/api/apiConfig";
+import { auth_endpoints } from "../../../services/api/apiConfig";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import loginImg from "../../../assets/loginImg.png";
@@ -23,6 +23,12 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import CustomButton from "../../Shared/CustomButton/CustomButton";
+import { LoginFormType } from "../../../interfaces/LoginFormInterface";
+import PasswordField from "../../Shared/CustomPasswordField/CustomPasswordField";
+import CustomTextField from "../../Shared/CustomTextField/CustomTextField";
+import { AxiosErrorResponse } from "../../../interfaces/AxiosErrorResponseInterface";
+import { jwtDecode } from "jwt-decode";
+import { CustomJwtPayload } from "../../../interfaces/JwtPayloadInterface";
 import AuthImg from "../../Shared/AuthImg/AuthImg";
 import Logo from "../../Shared/Logo/Logo";
 import TitleAuth from "../../Shared/TitleAuth/TitleAuth";
@@ -49,15 +55,25 @@ export default function Login() {
 
   const onSubmit = async (data: LoginFormType) => {
     try {
-      const response = await apiInstance.post(admin_endpoints.LOGIN, data);
+      const response = await apiInstance.post(auth_endpoints.LOGIN, data);
       const tokenWithOutBearerPrefix = response.data.data.token.replace(
         /^Bearer\s+/i,
         ""
       );
       localStorage.setItem("token", tokenWithOutBearerPrefix);
 
+      const { role } = tokenWithOutBearerPrefix
+        ? (jwtDecode(tokenWithOutBearerPrefix) as CustomJwtPayload)
+        : { role: "" };
+
       setToken(tokenWithOutBearerPrefix);
-      navigate("/");
+
+      if (role === "admin") {
+        navigate("/dashboard");
+      }
+      if (role === "user") {
+        navigate("/");
+      }
       showSnackbar("Logged in successfully", "success");
     } catch (error) {
       if (isAxiosError(error)) {
@@ -75,10 +91,14 @@ export default function Login() {
       <Grid size={6}>
         <Box sx={{ padding: "0.5rem" }}>
           <Logo />
-
         </Box>
         <Container maxWidth="sm" className="my-3">
-          <TitleAuth title="Sign In" desc="If you don’t have an account register You can" navigateTo="/register" link="Register here !" />
+          <TitleAuth
+            title="Sign In"
+            desc="If you don’t have an account register You can"
+            navigateTo="/register"
+            link="Register here !"
+          />
 
           <Box
             component="form"
@@ -127,12 +147,14 @@ export default function Login() {
             </CustomButton>
           </Box>
         </Container>
-
       </Grid>
 
-
       <Grid size={6} sx={{ position: "relative", color: "white" }}>
-        <AuthImg title="Sign in to Roamhome" desc="Homes as unique as you." img={loginImg} />
+        <AuthImg
+          title="Sign in to Roamhome"
+          desc="Homes as unique as you."
+          img={loginImg}
+        />
       </Grid>
     </>
   );
