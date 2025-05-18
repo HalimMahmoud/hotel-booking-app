@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+
+import { AuthContext } from "./../../../contexts/AuthContext";
+import NavBar from "../NavBar/NavBar";
+
 import {
   Box,
   Typography,
   Button,
-
   IconButton,
-
   Card,
   CardMedia,
   CardContent,
@@ -27,6 +31,11 @@ import { useNavigate } from "react-router-dom";
 import "rsuite/DateRangePicker/styles/index.css";
 
 export default function LandingPage() {
+  const { token, isManager } = useContext(AuthContext);
+
+  if (token && isManager) {
+    return <Navigate to="/dashboard" />;
+  }
   const navigate = useNavigate();
   const [count, setCount] = useState(2);
   const [rooms, setRooms] = useState([]);
