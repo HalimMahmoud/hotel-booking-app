@@ -23,6 +23,7 @@ import { ToastContainer } from "react-toastify";
 import Facilities from "./modules/Admin/Facilities/FacilitiesList/FacilitiesList";
 import RoomDetails from "./modules/User/RoomDetails/RoomDetails";
 import Home from "./modules/User/Home/Home";
+import RoomAds from "./modules/Admin/RoomAds/RoomAds";
 
 function App() {
   const router = createBrowserRouter([
@@ -68,6 +69,7 @@ function App() {
         { path: "bookingList", element: <BookingList /> },
         { path: "USerList", element: <UserList /> },
         { path: "facilities", element: <Facilities /> },
+        { path: "room-ads", element: <RoomAds /> },
       ],
     },
   ]);
