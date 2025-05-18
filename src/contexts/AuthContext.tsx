@@ -43,12 +43,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (!user) {
         getUserData();
       } else {
-        setLoading(false);  // Don't fetch again if user is already set
+        setLoading(false); // Don't fetch again if user is already set
       }
     } else {
-      setLoading(false);  // Set loading to false if no token is present
+      setLoading(false); // Set loading to false if no token is present
     }
-  
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, user]);
 
@@ -57,15 +57,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
   };
 
-  let decodedToken: CustomJwtPayload | null = null;
-  try {
-    decodedToken = token ? (jwtDecode(token) as CustomJwtPayload) : null;
-  } catch (error) {
-    console.error("Invalid token:", error);
-    decodedToken = null; // Ensure we set it to null if decoding fails
-  }
-
-  const isManager = decodedToken ? decodedToken?.userGroup === "Manager" : false;
+  const isManager = role === "admin";
 
   return (
     <AuthContext.Provider
@@ -87,6 +79,5 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
 
 export default AuthProvider;

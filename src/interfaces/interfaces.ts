@@ -34,6 +34,7 @@ export type AuthContextType = {
   isManager: boolean;
 };
 
+
 export interface CustomJwtPayload extends JwtPayload {
   userGroup: "Manager" | "Employee";
 }

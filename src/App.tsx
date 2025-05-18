@@ -10,6 +10,11 @@ import AuthProvider from "./contexts/AuthContext";
 import ProtectedRoute from "./modules/Shared/ProtectedRoute/ProtectedRoute";
 import SnackbarProvider from "./contexts/SnackbarContext";
 import AdminLayout from "./modules/Shared/AdminLayout/AdminLayout";
+import AuthLayout from "./modules/Shared/AuthLayout/AuthLayout";
+import Room from "./modules/Room/Room";
+import RoomData from "./modules/Room/RoomData";
+import BookingList from "./modules/BookingList/BookingList";
+import UserList from "./modules/UserList/UserList";
 import AuthLayer from "./modules/Shared/AuthLayout/AuthLayout";
 import Dashboard from "./modules/Admin/Dashboard/Dashboard";
 import LandingPage from "./modules/Shared/LandingPage/LandingPage";
@@ -23,7 +28,7 @@ function App() {
     { index: true, element: <LandingPage /> },
     {
       path: "/",
-      element: <AuthLayer />,
+      element: <AuthLayout />,
       errorElement: <NotFound />,
 
       children: [
@@ -39,13 +44,18 @@ function App() {
     {
       path: "dashboard",
       element: (
-        <ProtectedRoute>
-          <AdminLayout />
-        </ProtectedRoute>
+        // <ProtectedRoute>
+        //   <AdminLayout />
+        // </ProtectedRoute>
+        <AdminLayout />
       ),
       errorElement: <NotFound />,
       children: [
         { index: true, element: <Dashboard /> },
+        { path: "rooms", element: <Room /> },
+        { path: "addRooms", element: <RoomData /> },
+        { path: "bookingList", element: <BookingList /> },
+        { path: "USerList", element: <UserList /> },
         { path: "facilities", element: <Facilities /> },
       ],
     },
