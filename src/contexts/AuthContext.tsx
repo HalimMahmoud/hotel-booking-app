@@ -38,13 +38,19 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    if (token && !user) {
-      getUserData();
+    // If there's a valid token and user data hasn't been fetched yet, fetch user data
+    if (token) {
+      if (!user) {
+        getUserData();
+      } else {
+        setLoading(false); // Don't fetch again if user is already set
+      }
     } else {
-      setLoading(false);
+      setLoading(false); // Set loading to false if no token is present
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+  }, [token, user]);
 
   const logout = () => {
     removeToken();
