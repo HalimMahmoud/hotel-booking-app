@@ -26,25 +26,24 @@ import { useNavigate } from "react-router-dom";
 import "rsuite/DateRangePicker/styles/index.css";
 import NavBar from "../../Shared/NavBar/NavBar";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { IRoom } from "../../../interfaces/IRoom";
 
 export default function LandingPage() {
   const { token, isManager } = useContext(AuthContext);
 
-  if (token && isManager) {
-    return <Navigate to="/dashboard" />;
-  }
   const navigate = useNavigate();
   const [count, setCount] = useState(2);
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState<IRoom[]>([]);
+
   const [ads, setAdds] = useState([]);
 
   const [dateRange, setDateRange] = useState([null, null]);
 
   const handleExplore = () => {
     if (dateRange[0] && dateRange[1]) {
-      const startDate = dateRange[0].toISOString().split("T")[0];
-      const endDate = dateRange[1].toISOString().split("T")[0];
+      const startDate = dateRange[0]?.toISOString().split("T")[0];
+      const endDate = dateRange[1]?.toISOString().split("T")[0];
       navigate(
         `/explore?startDate=${startDate}&endDate=${endDate}&capacity=${count}`
       );
@@ -88,6 +87,10 @@ export default function LandingPage() {
     fetchRooms();
     fetchAdds();
   }, []);
+
+  if (token && isManager) {
+    return <Navigate to="/dashboard" />;
+  }
 
   return (
     <>
@@ -199,7 +202,7 @@ export default function LandingPage() {
         <Typography variant="h5" fontWeight="bold" color="#1f2b6c" mb={3}>
           Most popular ads
         </Typography>
-
+        {console.log(rooms)}
         {rooms.length >= 5 && (
           <Box
             sx={{
@@ -211,7 +214,7 @@ export default function LandingPage() {
             <Box sx={{ flex: { xs: "100%", md: "25%" } }}>
               <AdCard
                 item={{
-                  title: rooms[0].name,
+                  title: rooms[0].roomNumber,
                   location: rooms[0].location,
                   price: `$${rooms[0].price}`,
                   image: rooms[0].images?.[0] || Rectangle,

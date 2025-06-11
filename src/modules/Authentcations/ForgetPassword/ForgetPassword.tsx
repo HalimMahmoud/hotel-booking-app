@@ -1,62 +1,65 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { emailVefication } from "../../../services/vaildators";
+import { useNavigate } from "react-router-dom";
 import { fogetPass } from "../../../interfaces/interfaces";
 import { apiInstance } from "../../../services/api/apiInstance";
 import { users_endpoints } from "../../../services/api/apiConfig";
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
+import { forgetPasswordSehemaValidation } from "../../../services/vaildators";
+import { yupResolver } from "@hookform/resolvers/yup";
+import CustomButton from "../../Shared/CustomButton/CustomButton";
+import CustomTextField from "../../Shared/CustomTextField/CustomTextField";
+import TitleAuth from "../../Shared/TitleAuth/TitleAuth";
 
 export default function ForgetPassword() {
-  let navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const { formState: { errors, isSubmitting }, register, handleSubmit } = useForm({ mode: "onChange" })
+  const {
+    formState: { errors, isSubmitting },
+    register,
+    handleSubmit,
+  } = useForm({
+    mode: "onChange",
 
+    resolver: yupResolver(forgetPasswordSehemaValidation), // connect Yup schema here
+  });
 
   function submitData(data: fogetPass): void {
-    console.log(data)
-    apiInstance.post(users_endpoints.forgetPass, data).then((res) => {
-      console.log(res)
-      toast.success(res?.data?.message)
-      navigate("/reset-password", { state: data?.email })
-
-
-
-    }).catch((err) => {
-      console.log(err)
-    })
+    console.log(data);
+    apiInstance
+      .post(users_endpoints.forgetPass, data)
+      .then((res) => {
+        console.log(res);
+        toast.success(res?.data?.message);
+        navigate("/auth/reset-password", { state: data?.email });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  return <>
-    <Typography variant="h4" > Forgot password   </Typography>
-    <Typography sx={{ marginBlock: "20px" }} > If you already have an account register <br />
-      You can  <Link to="/login" style={{ textDecoration: "none" }} > <Box component={"span"} sx={{ color: "red", }}   > You can Login here ! </Box> </Link>  </Typography>
+  return (
+    <>
+      <TitleAuth
+        title="Forget Password"
+        desc="If you already have an account register You can"
+        navigateTo="/auth/login"
+        link="Login here !"
+      />
+      <Box component="form" onSubmit={handleSubmit(submitData)}>
+        <CustomTextField
+          {...register("email")}
+          label="Email"
+          register={register("email")}
+          error={errors.email}
+        />
+        <br />
+        <br />
 
-    <Box
-      component="form"
-      onSubmit={handleSubmit(submitData)}
-      noValidate
-    >
-      <TextField
-        {...register("email", emailVefication)}
-        error={!!errors.email}
-        helperText={errors.email?.message}
-
-
-        id="standard-basic" sx={{ marginBottom: "50px", width: "100%" }} label="Email" variant="standard" />
-      <br />
-
-      <Button
-        loading={isSubmitting}
-        type="submit" sx={{ width: "100%", marginLeft: "10px" }} variant="contained">
-
-        Send mail
-
-      </Button>
-
-    </Box>
-
-
-  </>;
+        <CustomButton fullWidth loading={isSubmitting} type="submit">
+          Send mail
+        </CustomButton>
+      </Box>
+    </>
+  );
 }

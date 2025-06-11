@@ -2,8 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import Rectangle from "../../../assets/Rectangle3.png";
 
-
-export default function AdsSections({ads}) {
+export default function AdsSections({ ads }) {
   return (
     <Box sx={{ px: 4, py: 6, backgroundColor: "#fff" }}>
       <Typography variant="h5" fontWeight="bold" color="#1f2b6c" mb={3}>
@@ -11,7 +10,7 @@ export default function AdsSections({ads}) {
       </Typography>
 
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
-        {ads.slice(0,4).map((ads, index) => (
+        {ads.slice(0, 4).map((ad, index) => (
           <Box
             key={index}
             sx={{
@@ -24,25 +23,25 @@ export default function AdsSections({ads}) {
           >
             <Box
               component="img"
-              src={ads.room?.images[0] || Rectangle}
-              alt={ads.title}
+              src={ad.room?.images[0] || Rectangle}
+              alt={ad.title}
               sx={{ width: "100%", height: 200, objectFit: "cover" }}
             />
 
-            {ads && (
+            {ad && (
               <Box
                 sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    backgroundColor: "#FF498B",
-                    color: "#fff",
-                    borderBottomLeftRadius: "12px",
-                    px: 2,
-                    py: 0.8,
-                    fontSize: "0.9rem",
-                    fontWeight: "bold",
-                    zIndex: 2,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  backgroundColor: "#FF498B",
+                  color: "#fff",
+                  borderBottomLeftRadius: "12px",
+                  px: 2,
+                  py: 0.8,
+                  fontSize: "0.9rem",
+                  fontWeight: "bold",
+                  zIndex: 2,
                 }}
               >
                 Popular Choice
@@ -51,10 +50,10 @@ export default function AdsSections({ads}) {
 
             <Box sx={{ p: 2 }}>
               <Typography variant="subtitle1" fontWeight="bold" color="#1f2b6c">
-                {ads.title}
+                {ad.title}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                {ads.location}
+                {ad.location}
               </Typography>
             </Box>
           </Box>

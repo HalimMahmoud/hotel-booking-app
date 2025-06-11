@@ -9,12 +9,20 @@ interface AuthImgProps {
 function AuthImg({ title, desc, img }: AuthImgProps) {
   return (
     <>
-      <Box sx={{ position: "relative", height: "100vh", borderRadius: "16px", overflow: "hidden" }}>
+      <Box
+        // height: "100%",
+        sx={{
+          position: "relative",
+          borderRadius: "16px",
+          overflow: "hidden",
+        }}
+      >
         <img
           src={img}
           alt="register"
+          height={100}
           style={{
-            width: "100%",
+            width: "auto",
             height: "100%",
             objectFit: "cover",
           }}
@@ -40,7 +48,7 @@ function AuthImg({ title, desc, img }: AuthImgProps) {
         </Box>
       </Box>
     </>
-  )
+  );
 }
 
-export default AuthImg
+export default AuthImg;

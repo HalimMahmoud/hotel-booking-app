@@ -21,7 +21,7 @@ import NotFound from "./modules/Shared/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
 
 import Facilities from "./modules/Admin/Facilities/FacilitiesList/FacilitiesList";
-import ExplorePage from "./modules/Shared/LandingPage/Explore";
+import ExplorePage from "./modules/User/LandingPage/Explore";
 import RoomDetails from "./modules/User/RoomDetails/RoomDetails";
 import Home from "./modules/User/Home/Home";
 import RoomAds from "./modules/Admin/RoomAds/RoomAds";
@@ -88,8 +88,7 @@ function App() {
         { path: "room-ads", element: <RoomAds /> },
       ],
     },
-    { path:"/explore", element:<ExplorePage />}
-    
+    { path: "/explore", element: <ExplorePage /> },
   ]);
   return (
     <SnackbarProvider>

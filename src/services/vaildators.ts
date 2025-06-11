@@ -68,6 +68,24 @@ export const changePasswordSehemaValidation = Yup.object().shape({
   oldPassword: Yup.string()
     .required("Old password is required")
     .min(8, "Old password length is already set to be at least 8 characters"),
-  newPassword: newPassword,
-  confirmNewPassword: confirmNewPassword,
+  newPassword,
+  confirmNewPassword,
+});
+export const resetPasswordSehemaValidation = Yup.object().shape({
+  email,
+  seed: otp,
+  password: Yup.string()
+    .required("New password is required")
+    .min(8, "New password length is already set to be at least 8 characters"),
+  confirmPassword: confirmNewPassword,
+});
+
+export const forgetPasswordSehemaValidation = Yup.object().shape({
+  email,
+});
+
+export const facilityDataSehemaValidation = Yup.object().shape({
+  name: Yup.string()
+    .required("Facility name is required")
+    .min(2, "Facility length shoud be at least 2 characters"),
 });

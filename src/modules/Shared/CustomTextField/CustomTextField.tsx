@@ -5,12 +5,16 @@ interface CustomTextFieldProps {
   label?: string;
   register: UseFormRegisterReturn;
   error?: FieldError;
+  value?: string;
+  disabled?: boolean;
 }
 
 export default function CustomTextField({
   label = "Field",
   register,
+  value,
   error,
+  disabled,
 }: CustomTextFieldProps) {
   return (
     <TextField
@@ -22,6 +26,8 @@ export default function CustomTextField({
       margin="normal"
       error={Boolean(error)}
       helperText={error?.message}
+      value={value}
+      disabled={disabled}
     />
   );
 }
