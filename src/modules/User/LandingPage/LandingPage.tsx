@@ -29,6 +29,19 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 import { IRoom } from "../../../interfaces/IRoom";
 
+import Room1 from "../../../assets/img_Mg==.jpg";
+import Room2 from "../../../assets/room-2.jpg";
+import Room3 from "../../../assets/room-3.jpg";
+import Room4 from "../../../assets/room-4.jpg";
+import Room5 from "../../../assets/room-5.jpg";
+
+import Pic1 from "../../../assets/pic.png";
+import Pic2 from "../../../assets/pic (1).png";
+import Pic3 from "../../../assets/pic (2).png";
+import Pic4 from "../../../assets/pic (3).png";
+import Pic5 from "../../../assets/pic (1).png";
+import Pic6 from "../../../assets/pic (2).png";
+import Pic7 from "../../../assets/pic (3).png";
 export default function LandingPage() {
   const { token, isManager } = useContext(AuthContext);
 
@@ -91,6 +104,100 @@ export default function LandingPage() {
   if (token && isManager) {
     return <Navigate to="/dashboard" />;
   }
+
+  // Static dummy data
+  const dummyLivingRooms = [
+    {
+      id: "1",
+      roomName: "Green Park",
+      location: "Tangerang, Indonesia",
+      image: Pic4,
+    },
+    {
+      id: "2",
+      roomName: "Podo Wae",
+      location: "Madiun, Indonesia",
+      image: Pic5,
+    },
+    {
+      id: "3",
+      roomName: "Silver Rain",
+      location: "Bandung, Indonesia",
+      image: Pic6,
+    },
+    {
+      id: "4",
+      roomName: "Cashville",
+      location: "Kemang, Indonesia",
+      image: Pic7,
+      label: "Popular Choice",
+    },
+  ];
+  const dummyAds = [
+    {
+      id: "1",
+      roomNumber: "Blue Origin Fams",
+      location: "Jakarta, Indonesia",
+      price: "$50",
+      image: Room1,
+    },
+    {
+      id: "2",
+      roomNumber: "Ocean Land",
+      location: "Bandung, Indonesia",
+      price: "$22",
+      image: Room2,
+    },
+    {
+      id: "3",
+      roomNumber: "Stark House",
+      location: "Malang, Indonesia",
+      price: "$856",
+      image: Room3,
+    },
+    {
+      id: "4",
+      roomNumber: "Vinna Vill",
+      location: "Malang, Indonesia",
+      price: "$62",
+      image: Room4,
+    },
+    {
+      id: "5",
+      roomNumber: "Bobox",
+      location: "Medan, Indonesia",
+      price: "$72",
+      image: Room5,
+    },
+  ];
+
+  const dummyHouses = [
+    {
+      id: "1",
+      houseName: "Tabby Town",
+      location: "Gunung Batu, Indonesia",
+      image: Pic1,
+      label: "Popular Choice",
+    },
+    {
+      id: "2",
+      houseName: "Anggana",
+      location: "Bogor, Indonesia",
+      image: Pic2,
+    },
+    {
+      id: "3",
+      houseName: "Seattle Rain",
+      location: "Jakarta, Indonesia",
+      image: Pic3,
+    },
+    {
+      id: "4",
+      houseName: "Wodden Pit",
+      location: "Wonosobo, Indonesia",
+      image: Pic4,
+    },
+  ];
 
   return (
     <>
@@ -202,8 +309,7 @@ export default function LandingPage() {
         <Typography variant="h5" fontWeight="bold" color="#1f2b6c" mb={3}>
           Most popular ads
         </Typography>
-        {console.log(rooms)}
-        {rooms.length >= 5 && (
+        {dummyAds.length >= 5 && (
           <Box
             sx={{
               display: "flex",
@@ -214,10 +320,10 @@ export default function LandingPage() {
             <Box sx={{ flex: { xs: "100%", md: "25%" } }}>
               <AdCard
                 item={{
-                  title: rooms[0].roomNumber,
-                  location: rooms[0].location,
-                  price: `$${rooms[0].price}`,
-                  image: rooms[0].images?.[0] || Rectangle,
+                  title: dummyAds[0].roomNumber,
+                  location: dummyAds[0].location,
+                  price: `$${dummyAds[0].price}`,
+                  image: dummyAds[0].image || Rectangle,
                 }}
                 height={400}
               />
@@ -233,19 +339,19 @@ export default function LandingPage() {
             >
               <AdCard
                 item={{
-                  title: rooms[1].name,
-                  location: rooms[1].location,
-                  price: `$${rooms[1].price}`,
-                  image: rooms[1].images?.[0] || Rectangle,
+                  title: dummyAds[1].roomNumber,
+                  location: dummyAds[1].location,
+                  price: `$${dummyAds[1].price}`,
+                  image: dummyAds[1].image || Rectangle,
                 }}
                 height={190}
               />
               <AdCard
                 item={{
-                  title: rooms[2].name,
-                  location: rooms[2].location,
-                  price: `$${rooms[2].price}`,
-                  image: rooms[2].images?.[0] || Rectangle,
+                  title: dummyAds[2].roomNumber,
+                  location: dummyAds[2].location,
+                  price: `$${dummyAds[2].price}`,
+                  image: dummyAds[2].image || Rectangle,
                 }}
                 height={190}
               />
@@ -261,19 +367,19 @@ export default function LandingPage() {
             >
               <AdCard
                 item={{
-                  title: rooms[3].name,
-                  location: rooms[3].location,
-                  price: `$${rooms[3].price}`,
-                  image: rooms[3].images?.[0]?.url || Rectangle,
+                  title: dummyAds[3].roomNumber,
+                  location: dummyAds[3].location,
+                  price: `${dummyAds[3].price}`,
+                  image: dummyAds[3].image || Rectangle,
                 }}
                 height={190}
               />
               <AdCard
                 item={{
-                  title: rooms[4].name,
-                  location: rooms[4].location,
-                  price: `$${rooms[4].price}`,
-                  image: rooms[4].images?.[0] || Rectangle,
+                  title: dummyAds[4].roomNumber,
+                  location: dummyAds[4].location,
+                  price: `$${dummyAds[4].price}`,
+                  image: dummyAds[4].image || Rectangle,
                 }}
                 height={190}
               />
@@ -281,8 +387,8 @@ export default function LandingPage() {
           </Box>
         )}
       </Box>
-      <BackyardHousesSection room={rooms} />
-      <HotelSection room={rooms} />
+      <BackyardHousesSection room={dummyHouses} />
+      <HotelSection room={dummyLivingRooms} />
       <AdsSections ads={ads} />
       <TestimonialSlider />
       <Footer />

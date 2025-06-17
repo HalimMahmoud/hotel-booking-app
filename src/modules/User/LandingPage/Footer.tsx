@@ -14,7 +14,6 @@ export default function Footer() {
         rowGap: 4,
       }}
     >
- 
       <Box sx={{ maxWidth: 240 }}>
         <Typography variant="h6" sx={{ color: "#1f2b6c", fontWeight: "bold" }}>
           Stay<span style={{ color: "#000" }}>cation.</span>
@@ -33,7 +32,6 @@ export default function Footer() {
         <Typography>Use Payments</Typography>
       </Box>
 
-     
       <Box>
         <Typography fontWeight="bold" sx={{ color: "#1f2b6c" }}>
           Explore Us
@@ -43,7 +41,6 @@ export default function Footer() {
         <Typography>Terms & Conditions</Typography>
       </Box>
 
-      
       <Box>
         <Typography fontWeight="bold" sx={{ color: "#1f2b6c" }}>
           Connect Us
@@ -53,10 +50,9 @@ export default function Footer() {
         <Typography>Staycation, Kemang, Jakarta</Typography>
       </Box>
 
-      
       <Box sx={{ width: "100%", mt: 4 }}>
         <Typography variant="body2" align="center" sx={{ color: "#aaa" }}>
-          Copyright 2019 • All rights reserved • Staycation
+          Copyright 2025 • All rights reserved • Staycation
         </Typography>
       </Box>
     </Box>

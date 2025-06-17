@@ -1,10 +1,21 @@
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet, Navigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Logo from "../Logo/Logo";
-import LoginImg from "../../../assets/SigninImage.jpg";
+import LoginImage from "../../../assets/SigninImage.jpg";
+import RegisterImage from "../../../assets/SignupImage.jpg";
+import ResetForgetImage from "../../../assets/ResetForgetPasswordImage.jpg";
+
+const Images = {
+  login: LoginImage,
+  register: RegisterImage,
+  "forget-password": ResetForgetImage,
+  "reset-passowrd": ResetForgetImage,
+};
 export default function AuthLayout() {
+  const location = useLocation();
+
   const { token, isManager } = useContext(AuthContext);
   if (token && isManager) {
     return <Navigate to="/dashboard" />;
@@ -12,6 +23,10 @@ export default function AuthLayout() {
   if (token && !isManager) {
     return <Navigate to="/" />;
   }
+  const authPage = location.pathname
+    .split("/auth/")
+    .filter(Boolean)
+    .pop() as string;
 
   return (
     <Grid size="grow" direction="row" sx={{ height: "100vh", display: "flex" }}>
@@ -67,7 +82,7 @@ export default function AuthLayout() {
           sx={{
             width: "100%",
             height: "100%",
-            backgroundImage: `url(${LoginImg})`,
+            backgroundImage: `url(${Images[authPage as keyof typeof Images]})`,
             backgroundRepeat: "no-repeat",
             backgroundOrigin: "content-box",
             backgroundSize: "cover",

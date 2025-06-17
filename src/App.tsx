@@ -29,6 +29,7 @@ import RoomAds from "./modules/Admin/RoomAds/RoomAds";
 import Checkout from "./modules/User/Checkout/Checkout";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import ProtectedRoute from "./modules/Shared/ProtectedRoute/ProtectedRoute";
 const stripe = loadStripe(
   "pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8"
 );
@@ -62,7 +63,6 @@ function App() {
       children: [
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
-        { path: "change-password", element: <ChangePassword /> },
         { path: "verify-account", element: <VerifyAccount /> },
         { path: "reset-password", element: <ResetPassword /> },
         { path: "forget-password", element: <ForgetPassword /> },
@@ -72,10 +72,10 @@ function App() {
     {
       path: "dashboard",
       element: (
-        // <ProtectedRoute>
-        //   <AdminLayout />
-        // </ProtectedRoute>
-        <AdminLayout />
+        <ProtectedRoute>
+          <AdminLayout />
+        </ProtectedRoute>
+        // <AdminLayout />
       ),
       errorElement: <NotFound />,
       children: [
@@ -85,7 +85,8 @@ function App() {
         { path: "bookingList", element: <BookingList /> },
         { path: "USerList", element: <UserList /> },
         { path: "facilities", element: <Facilities /> },
-        { path: "room-ads", element: <RoomAds /> },
+        { path: "ads", element: <RoomAds /> },
+        { path: "change-password", element: <ChangePassword /> },
       ],
     },
     { path: "/explore", element: <ExplorePage /> },

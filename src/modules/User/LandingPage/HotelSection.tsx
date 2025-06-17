@@ -1,29 +1,5 @@
 import { Box, Typography } from "@mui/material";
 
-const houses = [
-  {
-    title: "Tabby Town",
-    location: "Gunung Batu, Indonesia",
-    img: "https://i.ibb.co/ZzKntNV/greenhouse.png",
-    popular: true,
-  },
-  {
-    title: "Anggana",
-    location: "Bogor, Indonesia",
-    img: "https://i.ibb.co/YfB3RrK/pool.png",
-  },
-  {
-    title: "Seattle Rain",
-    location: "Jakarta, Indonesia",
-    img: "https://i.ibb.co/ZBdr7mF/garden.png",
-  },
-  {
-    title: "Wooden Pit",
-    location: "Wonosobo, Indonesia",
-    img: "https://i.ibb.co/Z8yt4CH/wooden-house.png",
-  },
-];
-
 export default function HotelSection({ room }) {
   return (
     <Box sx={{ px: 4, py: 6, backgroundColor: "#fff" }}>
@@ -45,8 +21,8 @@ export default function HotelSection({ room }) {
           >
             <Box
               component="img"
-              src={house.images[0]}
-              alt={house.images[0]}
+              src={house.image}
+              alt={house.image}
               sx={{ width: "100%", height: 200, objectFit: "cover" }}
             />
 
