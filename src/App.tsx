@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 // import AuthLayout from "./modules/Shared/AuthLayout/AuthLayout";
 import ResetPassword from "./modules/Authentcations/ResetPassword/ResetPassword";
 import ForgetPassword from "./modules/Authentcations/ForgetPassword/ForgetPassword";
@@ -35,7 +35,7 @@ const stripe = loadStripe(
 );
 
 function App() {
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: <LandingPage />,
