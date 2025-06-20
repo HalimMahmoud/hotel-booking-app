@@ -1,3 +1,16 @@
+# Node dependencies
+node_modules/
+
+# Build folders
+build/
+dist/
+
+# OS/Editor junk
+.DS_Store
+.env
+*.log
+
+
 # Logs
 logs
 *.log
