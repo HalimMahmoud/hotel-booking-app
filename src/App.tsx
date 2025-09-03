@@ -19,7 +19,6 @@ import Dashboard from "./modules/Admin/Dashboard/Dashboard";
 import LandingPage from "./modules/User/LandingPage/LandingPage";
 import NotFound from "./modules/Shared/NotFound/NotFound";
 import { ToastContainer } from "react-toastify";
-
 import Facilities from "./modules/Admin/Facilities/FacilitiesList/FacilitiesList";
 import ExplorePage from "./modules/User/LandingPage/Explore";
 import RoomDetails from "./modules/User/RoomDetails/RoomDetails";

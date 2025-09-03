@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+# 🏨 Hotel Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **hotel booking application** that allows users to search, book, and manage hotel rooms stays seamlessly.  
+Built with **React 19**, **Vite**, and **Material UI**, the system also integrates **Stripe** for secure online payments.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 User authentication with JWT
+- 🏨 Browse and search hotels with filters
+- 📅 Date selection with Material UI pickers
+- 📋 Book rooms with availability check
+- 💳 Secure payments using Stripe integration
+- 📊 Analytics & booking reports with **Recharts**
+- 🎨 Modern UI with Material UI & Emotion styling
+- 📢 Toast notifications with React Toastify
+- ✅ Form validation using React Hook Form & Yup
+- 📱 Responsive design for desktop and mobile
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend Framework:** React 19 + Vite
+- **UI Libraries:** Material UI, RSuite, Emotion
+- **Forms & Validation:** React Hook Form, Yup, @hookform/resolvers
+- **Date & Time:** Day.js, MUI Date Pickers
+- **Payments:** Stripe (React Stripe JS + Stripe JS)
+- **State & Data:** Axios for API requests, JWT Decode for auth
+- **Routing:** React Router v7
+- **Charts & Analytics:** Recharts
+- **Notifications:** React Toastify
+- **Dev Tools:** ESLint, TypeScript, gh-pages for deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/HalimMahmoud/hotel-booking-app.git
+   cd hotel-booking-app
+   ```
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+Open http://localhost:5173
+in your browser 🚀
