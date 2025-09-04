@@ -56,3 +56,17 @@ Built with **React 19**, **Vite**, and **Material UI**, the system also integrat
 
 Open http://localhost:5173
 in your browser 🚀
+
+## 🔑 Credentials
+
+You can use the following demo accounts to log in:
+
+### 👤 User Account
+
+- **Email:** `4167blue@powerscrews.com`
+- **Password:** `Pass@123`
+
+### 🛠️ Admin Account
+
+- **Email:** `glynnisinquisitive@powerscrews.com`
+- **Password:** `Admin@123`
